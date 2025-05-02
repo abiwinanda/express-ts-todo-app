@@ -1,7 +1,9 @@
 import express, { Router, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 import { z } from 'zod';
 import { users } from '../models/db';
 import { validate } from '../middleware/validate';
+import { JWT_SECRET } from '../config';
 
 const router: Router = express.Router();
 
@@ -31,7 +33,9 @@ router.post('/login', validate(registerSchema), (req: Request, res: Response): v
         return;
     }
 
-    res.status(200).json({ token: `fake-token-for-${username}`});
+    const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(200).json({ token: token });
 });
 
 export default router;

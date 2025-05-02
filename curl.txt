@@ -1,0 +1,31 @@
+Register a new user:
+
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username": "nyoman", "password": "secret123"}'
+
+Login with the user:
+
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "nyoman", "password": "secret123"}'
+
+Create a todo for the user:
+
+curl -X POST http://localhost:3000/todos \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{"title": "first task"}'
+
+Get a list of all user's todo:
+
+curl http://localhost:3000/todos \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN"
+
+Mark a todo as done
+
+curl -X POST http://localhost:3000/todos/complete \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{"id": "TASK_ID"}'
