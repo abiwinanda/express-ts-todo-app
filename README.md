@@ -76,12 +76,6 @@ Content-Type: application/json
 }
 ```
 
-Response:
-
-```json
-{ "token": "your-jwt-token" }
-```
-
 ---
 
 ### 🙋‍♂️ Get Current User
@@ -118,6 +112,6 @@ Authorization: Bearer <token>
 
 ## 🛡 Auth Middleware
 
-The app uses real **JWT tokens**, signed and verified using `jsonwebtoken`.
+The app uses **JWT tokens**, signed and verified using `jsonwebtoken`.
 
 Tokens expire in 1 hour and are stored in memory only during runtime.
